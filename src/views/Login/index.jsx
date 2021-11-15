@@ -1,18 +1,23 @@
 import { useState } from "react";
+
 import { Button, Container, Grid, TextField } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
-import Drawer from "../../components/Drawer";
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
+
+
+
+
 
 const Login = () => {
-  const [inputs, setInputs] = useState({
-    email: "",
+  const [values, setValues] = useState({
+    
     password: "",
+    weight: "",
+    weightRange: "",
+    showPassword: true
   });
 
   const handleChange = (e) => {
@@ -22,11 +27,28 @@ const Login = () => {
       [name]: value,
     }));
   };
+  
+  const handleClickShowPassword = () => {
+    setValues({
+      ...values,
+      showPassword: !values.showPassword
+    });
+  };
+  
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+  const [inputs, setInputs] = useState({
+    email: "",
+    password: "",
+  });
+
+
 
   const handleSubmit = (e) => console.log(inputs);
 
   return (
-    <Drawer>
+    
       <Container maxWidth="xl">
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6}>
@@ -61,12 +83,17 @@ const Login = () => {
                   type="password"
                   fullWidth
                   InputProps={{
-                    endAdornment: <InputAdornment position="end">
-                     
-                      <IconButton>
-                      <  VisibilityOff/>
-                      </IconButton>
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={handleClickShowPassword}
+                          onMouseDown={handleMouseDownPassword}
+                        >
+                          {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
                       </InputAdornment>
+                    )
                   }}
                 />
               </Grid>
@@ -96,8 +123,9 @@ const Login = () => {
           </Grid>
         </Grid>
       </Container>
-    </Drawer>
+    
   );
 };
 
 export default Login;
+

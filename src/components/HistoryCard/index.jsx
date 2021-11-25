@@ -19,7 +19,7 @@ const HistoryCard = ({ user }) => {
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          
+          {user.author}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           {user.sinopsis}

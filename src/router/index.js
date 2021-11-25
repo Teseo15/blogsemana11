@@ -1,24 +1,47 @@
-import RouterWithLayout from "./RouterLayout";
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Drawer, MainBar } from "../components";
-import { LoginView, ContactView, HomeView } from "../views";
+import { Drawer, MainBar } from "../layout";
+
+const Home = lazy(() => import("../views/Home"));
+const Contact = lazy(() => import("../views/Contact"));
+const Login = lazy(() => import("../views/Login"));
 
 const Router = () => {
   return (
     <BrowserRouter>
-      <Drawer>
-        <Routes>
-          <Route path="/" element={<HomeView />} />
-          <Route path="/contact" element={<ContactView />} />
-          <Route path="/login" element={<LoginView />} />
-        </Routes>
-      </Drawer>
+      <Routes>
+        <Route element={<Drawer />}>
+          <Route
+            path="/"
+            element={
+              <Suspense fallback={<>Cargando...</>}>
+                <Home />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/contact"
+            element={
+              <Suspense fallback={<>Cargando...</>}>
+                <Contact />
+              </Suspense>
+            }
+          />
+        </Route>
+      </Routes>
 
-      {/* <MainBar>
-        <Routes>
-          <Route path="/login" element={<LoginView />} />
-        </Routes>
-      </MainBar> */}
+      <Routes>
+        <Route element={<MainBar />}>
+          <Route
+            path="/login"
+            element={
+              <Suspense fallback={<>Cargando...</>}>
+                <Login />
+              </Suspense>
+            }
+          />
+        </Route>
+      </Routes>
     </BrowserRouter>
   );
 };

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, Container, TextField } from "@mui/material";
-
+import Drawer from "../../layout/Drawer";
 
 const Contact = () => {
   // * Teniendo un solo state para todos mis inputs
@@ -33,12 +33,11 @@ const Contact = () => {
 
   return (
     <>
-        <Container maxWidth="xl">
-          <div>
-            <h1>Hola</h1>
-          </div>
-        </Container>
-    
+      <Container maxWidth="xl">
+        <div>
+          <h1>Hola</h1>
+        </div>
+      </Container>
     </>
   );
 };

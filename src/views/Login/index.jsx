@@ -6,20 +6,20 @@ import InputAdornment from "@mui/material/InputAdornment";
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-
-
-
-
+import { login } from "../../services/auth";
 
 const Login = () => {
   const [values, setValues] = useState({
-    
+    email: "",
     password: "",
     weight: "",
     weightRange: "",
     showPassword: true
   });
-
+  const [inputs, setInputs] = useState({
+    email: "",
+    password: "",
+  });
   const handleChange = (e) => {
     const { name, value } = e.target;
     setInputs((inputs) => ({
@@ -38,14 +38,13 @@ const Login = () => {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
-  const [inputs, setInputs] = useState({
-    email: "",
-    password: "",
-  });
 
 
 
-  const handleSubmit = (e) => console.log(inputs);
+  const handleSubmit = async() => {
+    const response = await login(inputs);
+    console.log(response); 
+  };
 
   return (
     

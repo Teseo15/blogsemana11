@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 import { AppBar, Box, Toolbar, Typography, Button } from "@mui/material";
 
 const MainBar = () => {
@@ -11,6 +12,7 @@ const MainBar = () => {
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
+      <Outlet />
     </Box>
   );
 };

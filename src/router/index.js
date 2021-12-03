@@ -5,7 +5,7 @@ import { Drawer, MainBar } from "../layout";
 const Home = lazy(() => import("../views/Home"));
 const Contact = lazy(() => import("../views/Contact"));
 const Login = lazy(() => import("../views/Login"));
-
+const Book = lazy(() => import("../views/Book"));
 const Router = () => {
   return (
     <BrowserRouter>
@@ -27,6 +27,14 @@ const Router = () => {
               </Suspense>
             }
           />
+          <Route
+            path="/form"
+            element={
+            <Suspense fallback={<>Cargando...</>}>
+              <Book/>
+            </Suspense>
+            }  
+          />
         </Route>
       </Routes>
 
@@ -42,6 +50,7 @@ const Router = () => {
           />
         </Route>
       </Routes>
+      
     </BrowserRouter>
   );
 };

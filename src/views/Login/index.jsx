@@ -6,7 +6,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { login } from "../../services/auth";
+import { loginService } from "../../services/auth";
 
 const Login = () => {
   const [values, setValues] = useState({
@@ -42,7 +42,7 @@ const Login = () => {
 
 
   const handleSubmit = async() => {
-    const response = await login(inputs);
+    const response = await loginService(inputs);
     console.log(response); 
   };
 
@@ -113,7 +113,7 @@ const Login = () => {
 
               <img 
               width="610"
-              height ="540"
+              height ="440"
               
               src="https://images.pexels.com/photos/590493/pexels-photo-590493.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"/>
 

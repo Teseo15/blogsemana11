@@ -15,10 +15,10 @@ export const GETO = () => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-     
     },
   };
 };
+
 
 export const POST = (body, token) => {
   return {
@@ -30,3 +30,32 @@ export const POST = (body, token) => {
     body: JSON.stringify(body),
   };
 };
+
+export const POSTO = (body) => {
+  return {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  };
+};
+
+export const POST_FORM_DATA = body => {
+  return {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+    },
+    body: body,
+  };
+};
+
+export const DELETE = (id) => {
+  return {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+}

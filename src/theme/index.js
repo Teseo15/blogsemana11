@@ -14,6 +14,12 @@ const theme = createTheme({
     secondary: {
       main: "#1e3c72",
     },
+    aver:{
+      main:"#40FA04",
+    },
+    blanco:{
+      main:"#FFFFFF",
+    }
   },
 });
 //querio

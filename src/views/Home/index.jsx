@@ -23,6 +23,7 @@ const Home = () => {
 
   const fetchUsers = async () => {
     const response = await list();
+    console.log("datar",response)
     setUsers(response);
    
   };
